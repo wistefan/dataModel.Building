@@ -1,4 +1,4 @@
-name: Validate Spec
+name: Generate Models
 
 on:
   push:
