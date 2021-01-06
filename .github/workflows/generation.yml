@@ -21,7 +21,7 @@ jobs:
           ls
       - name: Maven package
         run: |
-          mvn package -f ../java/pom.xml
+          mvn package -f /publish/java/pom.xml
 
   generate-python:
     runs-on: ubuntu-18.04

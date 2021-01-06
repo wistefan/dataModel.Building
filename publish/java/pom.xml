@@ -21,7 +21,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>/java/swagger/src/main/java</source>
+                                <source>../../java/swagger/src/main/java</source>
                             </sources>
                         </configuration>
                     </execution>
