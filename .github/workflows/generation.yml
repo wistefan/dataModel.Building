@@ -1,0 +1,39 @@
+name: Validate Spec
+
+on:
+  push:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  generate-java:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate Java
+        run: |
+          docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/Building/swagger.yaml -o /local/java -g java --skip-validate-spec --global-property models --additional-properties=modelPackage=org.fiware.smartdatamodels.building
+
+  generate-python:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate Python
+        run: |
+          docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/Building/swagger.yaml -o /local/python -g python --skip-validate-spec --global-property models --additional-properties=packageName=smartdatamodels_building
+
+  generate-javasript:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate Javascript
+        run: |
+          docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/Building/swagger.yaml -o /local/javascript -g javascript --skip-validate-spec --global-property models --additional-properties=modelPackage=smartdatamodels_building
+
