@@ -18,7 +18,11 @@ jobs:
           docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/Building/swagger.yaml -o /local/java -g java --skip-validate-spec --global-property models --additional-properties=modelPackage=org.fiware.smartdatamodels.building
 
       - run: |
-          ls
+          ls /publish
+
+      - run: |
+          ls /publish/java
+
       - name: Maven package
         run: |
           mvn package -f /publish/java/pom.xml
